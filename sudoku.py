@@ -121,7 +121,7 @@ def highlightVisualize(y,x):
     for i in range(9):
         for j in range(9):
             if boardForVisual[i][j] != 0 and fixed[i][j] != 1 :
-                pygame.draw.rect(surface, (0,255,0), (j*(600/9), i*(600/9), (600/9), (600/9) ), 2)
+                pygame.draw.rect(surface, (0,255,0), (j*(600/9), i*(600/9), (600/9), (600/9) ), 3)
     pygame.draw.rect(surface, (255,0,0), (x*(600/9), y*(600/9), (600/9), (600/9) ), 3)
 
     win.blit(surface, (50,50))
@@ -200,7 +200,7 @@ def visualizeBacktracking(currentRow,currentCol):
             boardForVisual[currentRow][currentCol] = number + 1
             highlightVisualize(currentRow,currentCol)
 
-            time.sleep(0.001)
+            time.sleep(0.1)
 
             nextx, nexty = nextPos(currentRow,currentCol)
             visualizeBacktracking(nextx,nexty)
