@@ -8,6 +8,8 @@
 else:
     set the sudoku board manually inside the board.txt file
 
+* NOTE : if you set a tough board,( not less numbers but a tough board to solve ) change time.sleep(0.01) to time.sleep(0.001) in the sudoku-solver.py and sudoky.py
+
 ->run sudoku-solver.py for the backtracking visualization using just python
 
 
