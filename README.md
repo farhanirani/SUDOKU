@@ -1,4 +1,4 @@
-# Sudoku Solver using Backtracking
+# Sudoku using Backtracking
 
 
 # basic
@@ -20,6 +20,7 @@ else:
 ->enter a number after clicking a sqaure to see if you can play it there
 
 ******************************** main **********************************
+
 ->press "S" to watch it solve the puzzle using backtracking 
 
 
