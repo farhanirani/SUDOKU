@@ -129,7 +129,7 @@ def sudoku(currentrow,currentcol):
 
             # for visuals, remove the below 3 lines for the direct solution
             printBoard()
-            time.sleep(0.01)
+            time.sleep(0.1)
             os.system(('cls'))
 
             nextx, nexty = nextPos(currentrow,currentcol)
