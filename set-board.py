@@ -55,10 +55,30 @@ def saveBoard():
     pygame.quit()
     exit()
 
+def checkIfPlacingIsPossible(currentRow,currentCol,number):
+    gridRowNum = int( currentRow / 3)
+    gridColNum = int( currentCol / 3)
+    for r in range(9):
+        if board[r][currentCol] == number + 1 :
+            return 0
+    for c in range(9):
+        if board[currentRow][c] == number + 1 :
+            return 0
+    for r in range(gridRowNum * 3, gridRowNum * 3 + 3):
+        for c in range( gridColNum * 3, gridColNum * 3 + 3 ):
+            if r == currentRow and c == currentCol:
+                pass
+            elif board[r][c] == number + 1:
+                return 0
+    return 1
+
 #--------------------------------------------------------
 
+f = open('board.txt', 'r')
+lines = f.readlines()
+board = [[ int(n) for n in line.split() ] for line in lines ]
+f.close()
 
-board = [[0 for _ in range(9)] for _ in range(9)]
 font = pygame.font.SysFont('8-Bit-Madness', 45)
 text = font.render("Press Enter to Save", 1, (0,0,0))
 win.blit(text, (220,10) )
@@ -80,12 +100,13 @@ while True:
                 saveBoard()
 
         if event.type == MOUSEBUTTONDOWN:
-            y,x = pygame.mouse.get_pos()
-            y -= 50
-            x -= 50
-            x = int(x//(600/9))
-            y = int(y//(600/9))
-            if x < 9 and x >= 0 and y >= 0 and y < 9:
+            ty,tx = pygame.mouse.get_pos()
+            ty -= 50
+            tx -= 50
+            tx = int(tx//(600/9))
+            ty = int(ty//(600/9))
+            if tx < 9 and tx >= 0 and ty >= 0 and ty < 9 :
+                x, y = tx, ty
                 highlight(x,y)
             else:
                 redraw()
@@ -94,21 +115,27 @@ while True:
             if event.key == K_0 or event.key == K_KP0 :
                 board[x][y] = 0
             elif event.key == K_1 or event.key == K_KP1:
-                board[x][y] = 1
+                num =  1
             elif event.key == K_2 or event.key == K_KP2 :
-                board[x][y] = 2
+                num =  2
             elif event.key == K_3 or event.key == K_KP3 :
-                board[x][y] = 3
+                num =  3
             elif event.key == K_4 or event.key == K_KP4 :
-                board[x][y] = 4
+                num =  4
             elif event.key == K_5 or event.key == K_KP5 :
-                board[x][y] = 5
+                num =  5
             elif event.key == K_6 or event.key == K_KP6 :
-                board[x][y] = 6
+                num =  6
             elif event.key == K_7 or event.key == K_KP7 :
-                board[x][y] = 7
+                num =  7
             elif event.key == K_8 or event.key == K_KP8 :
-                board[x][y] = 8
+                num =  8
             elif event.key == K_9 or event.key == K_KP9 :
-                board[x][y] = 9
+                num =  9
+
+            if checkIfPlacingIsPossible(x,y,num-1) == 1 :
+                board[x][y] = num
+            else:
+                board[x][y] = 0
+
             redraw()
