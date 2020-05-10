@@ -112,6 +112,7 @@ while True:
                 redraw()
                 
         if event.type == KEYDOWN:
+            num = 0
             if event.key == K_0 or event.key == K_KP0 :
                 board[x][y] = 0
             elif event.key == K_1 or event.key == K_KP1:
