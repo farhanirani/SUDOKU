@@ -225,13 +225,23 @@ win.fill((255,255,255))
 pygame.draw.rect(win, (0,0,0), (48,48,604,604), 3)
 surface = pygame.Surface((600,600))
 font = pygame.font.SysFont('Calibri', 45)
-text = font.render("SUDOKU", 1, (0,0,0))
-win.blit(text, (280,5) )
-redraw()
 
+redraw()
+timee = 0
+timeTimer = 0
 
 while True:
     clock.tick(60)
+
+    if timeTimer > 0 :
+        timeTimer -= 1
+    else:
+        timeTimer = 50
+        timee += 1
+        text = font.render(str(timee), 1, (0,0,0))
+        pygame.draw.rect(win, (255,255,255), (600,660,200,50) )
+        win.blit(text, ( 650, 655 ) )
+        pygame.display.update()
 
     for event in pygame.event.get():
         if event.type == QUIT:
