@@ -82,6 +82,9 @@ f.close()
 font = pygame.font.SysFont('8-Bit-Madness', 45)
 text = font.render("Press Enter to Save", 1, (0,0,0))
 win.blit(text, (220,10) )
+text = font.render("Reset", 1, (0,0,0))
+pygame.draw.rect(win, (80,80,80), (300,658,100,35))
+win.blit(text, (305,660) )
 
 redraw()
 # main loop
@@ -101,15 +104,21 @@ while True:
 
         if event.type == MOUSEBUTTONDOWN:
             ty,tx = pygame.mouse.get_pos()
-            ty -= 50
-            tx -= 50
-            tx = int(tx//(600/9))
-            ty = int(ty//(600/9))
-            if tx < 9 and tx >= 0 and ty >= 0 and ty < 9 :
-                x, y = tx, ty
-                highlight(x,y)
-            else:
+            if ty > 300 and ty < 400 and tx > 658 and tx < 693 :
+                for i in range(9):
+                    for j in range(9):
+                        board[i][j] = 0
                 redraw()
+            else:
+                ty -= 50
+                tx -= 50
+                tx = int(tx//(600/9))
+                ty = int(ty//(600/9))
+                if tx < 9 and tx >= 0 and ty >= 0 and ty < 9 :
+                    x, y = tx, ty
+                    highlight(x,y)
+                else:
+                    redraw()
                 
         if event.type == KEYDOWN:
             num = 0
