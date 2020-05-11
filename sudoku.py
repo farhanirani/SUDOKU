@@ -53,7 +53,7 @@ def redraw():
         for i in range(9):
             if board[i][j] != 0: 
                 text = font.render(str(board[i][j]), 1, (0,0,0))
-                surface.blit(text, ((j)*(600/9)+25, (i)*(600/9)+20) )
+                surface.blit(text, ((j)*(600/9)+22, (i)*(600/9)+15) )
     win.blit(surface, (50,50))
     pygame.display.update()
 
@@ -62,7 +62,7 @@ def redrawtemp(): # only for drawing the board and numbers after success/failure
         for i in range(9):
             if board[i][j] != 0: 
                 text = font.render(str(board[i][j]), 1, (0,0,0))
-                surface.blit(text, ((j)*(600/9)+25, (i)*(600/9)+20) )
+                surface.blit(text, ((j)*(600/9)+22, (i)*(600/9)+15) )
     win.blit(surface, (50,50))
     pygame.display.update()
     pygame.time.delay(400)
@@ -100,7 +100,7 @@ def redrawVisualize():
         for i in range(9):
             if boardForVisual[i][j] != 0: 
                 text = font.render(str(boardForVisual[i][j]), 1, (0,0,0))
-                surface.blit(text, ((j)*(600/9)+25, (i)*(600/9)+20) )
+                surface.blit(text, ((j)*(600/9)+22, (i)*(600/9)+15) )
 
     win.blit(surface, (50,50))
     pygame.display.update()
@@ -224,9 +224,9 @@ win = pygame.display.set_mode((700,700))
 win.fill((255,255,255))
 pygame.draw.rect(win, (0,0,0), (48,48,604,604), 3)
 surface = pygame.Surface((600,600))
-font = pygame.font.SysFont('8-Bit-Madness', 45)
+font = pygame.font.SysFont('Calibri', 45)
 text = font.render("SUDOKU", 1, (0,0,0))
-win.blit(text, (300,10) )
+win.blit(text, (280,5) )
 redraw()
 
 

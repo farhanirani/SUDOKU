@@ -33,7 +33,7 @@ def redraw():
         for i in range(9):
             if board[i][j] != 0: 
                 text = font.render(str(board[i][j]), 1, (0,0,0))
-                surface.blit(text, ((j)*(600/9)+25, (i)*(600/9)+20) )
+                surface.blit(text, ((j)*(600/9)+22, (i)*(600/9)+15) )
     win.blit(surface, (50,50))
     pygame.display.update()
 
@@ -79,10 +79,11 @@ lines = f.readlines()
 board = [[ int(n) for n in line.split() ] for line in lines ]
 f.close()
 
-font = pygame.font.SysFont('8-Bit-Madness', 45)
+font = pygame.font.SysFont('Calibri', 35)
 text = font.render("Press Enter to Save", 1, (0,0,0))
-win.blit(text, (220,10) )
-text = font.render("Reset", 1, (0,0,0))
+win.blit(text, (220,5) )
+text = font.render("Reset", 1, (255,255,255))
+font = pygame.font.SysFont('Calibri', 45)
 pygame.draw.rect(win, (80,80,80), (300,658,100,35))
 win.blit(text, (305,660) )
 
