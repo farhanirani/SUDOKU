@@ -121,7 +121,7 @@ def highlightVisualize(y,x):
     for i in range(9):
         for j in range(9):
             if boardForVisual[i][j] != 0 and fixed[i][j] != 1 :
-                pygame.draw.rect(surface, (0,255,0), (j*(600/9) + 10, i*(600/9) + 10, (600/9)-20, (600/9)-20 ), 3)
+                pygame.draw.rect(surface, (0,255,0), (j*(600/9) + 4, i*(600/9) + 4, (600/9)-8, (600/9)-8 ), 3)
     pygame.draw.rect(surface, (255,0,0), (x*(600/9), y*(600/9), (600/9), (600/9) ), 3)
 
     win.blit(surface, (50,50))
