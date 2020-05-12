@@ -114,6 +114,7 @@ def seekNextPosition(currentRow,currentCol) :
 
 ####### MAIN LOOP
 def sudoku(currentrow,currentcol):
+    global iterations, divideFaster
     
     for number in range(9):
 
@@ -129,7 +130,12 @@ def sudoku(currentrow,currentcol):
 
             # for visuals, remove the below 3 lines for the direct solution
             printBoard()
-            time.sleep(0.1)
+
+            time.sleep(0.1/divideFaster)
+            iterations += 1
+            if iterations > 100:
+                divideFaster += 5
+
             os.system(('cls'))
 
             nextx, nexty = nextPos(currentrow,currentcol)
@@ -142,6 +148,8 @@ def sudoku(currentrow,currentcol):
 
 
 
+iterations = 0
+divideFaster = 1
 
 startx = 0
 starty = 0

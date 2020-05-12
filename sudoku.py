@@ -1,5 +1,7 @@
 import os, time
 
+if os.path.exists("board-solved.txt"):
+    os.remove('board-solved.txt')
 os.system("python z_solve_board_quick.py")
 
 f = open('board.txt', 'r')
@@ -193,6 +195,7 @@ def seekNextPosition(currentRow,currentCol) :
 
 
 def visualizeBacktracking(currentRow,currentCol):
+    global iterations, divideFaster
     for number in range(9):
         nextx, nexty = seekNextPosition(currentRow,currentCol)
         boardForVisual[nextx][nexty] = 0
@@ -200,7 +203,10 @@ def visualizeBacktracking(currentRow,currentCol):
             boardForVisual[currentRow][currentCol] = number + 1
             highlightVisualize(currentRow,currentCol)
 
-            time.sleep(0.1)
+            time.sleep(0.1/divideFaster)
+            iterations += 1
+            if iterations > 100:
+                divideFaster += 5
 
             nextx, nexty = nextPos(currentRow,currentCol)
             visualizeBacktracking(nextx,nexty)
@@ -229,6 +235,9 @@ font = pygame.font.SysFont('Calibri', 45)
 redraw()
 timee = 0
 timeTimer = 0
+
+iterations = 0
+divideFaster = 1
 
 while True:
     clock.tick(60)
