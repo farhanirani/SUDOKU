@@ -9,10 +9,14 @@ lines = f.readlines()
 board = [[ int(n) for n in line.split() ] for line in lines ]
 boardForVisual = [[ int(n) for n in line.split() ] for line in lines ]
 f.close()
-f = open('board-solved.txt', 'r')
-lines = f.readlines()
-solvedboard = [[ int(n) for n in line.split() ] for line in lines ]
-f.close()
+
+try:
+    f = open('board-solved.txt', 'r')
+except:
+    print("BOARD ENTERED IS UNSOLVABLE, \nPLEASE CHECK THE NUMBERS AND TRY AGAIN")
+    time.sleep(3)
+    exit()
+
 
 fixed = [[0 for _ in range(9)] for _ in range(9)]
 for i in range(9):
