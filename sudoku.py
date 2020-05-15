@@ -201,12 +201,15 @@ def visualizeBacktracking(currentRow,currentCol):
         boardForVisual[nextx][nexty] = 0
         if checkIfPlacingIsPossible(currentRow,currentCol,number) == 1 :
             boardForVisual[currentRow][currentCol] = number + 1
-            highlightVisualize(currentRow,currentCol)
+
+            if divideFaster <= 250:
+                highlightVisualize(currentRow,currentCol)
 
             time.sleep(0.1/divideFaster)
             iterations += 1
             if iterations > 100:
                 divideFaster += 5
+                iterations = 0
 
             nextx, nexty = nextPos(currentRow,currentCol)
             visualizeBacktracking(nextx,nexty)
