@@ -87,6 +87,8 @@ font = pygame.font.SysFont('Calibri', 45)
 pygame.draw.rect(win, (80,80,80), (300,658,100,35))
 win.blit(text, (305,660) )
 
+x = 0
+y = 0
 redraw()
 # main loop
 while True:
