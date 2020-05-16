@@ -16,7 +16,7 @@ try:
     solvedboard = [[ int(n) for n in line.split() ] for line in lines ]
     f.close()
 except:
-    print("BOARD ENTERED IS UNSOLVABLE, \nPLEASE CHECK THE NUMBERS AND TRY AGAIN")
+    print("BOARD IS UNSOLVABLE, \nPLEASE CHECK THE NUMBERS AND TRY AGAIN")
     time.sleep(3)
     exit()
 
@@ -116,10 +116,12 @@ def forVeryHardBoardTLE():
     while True:
         for event in pygame.event.get():
             if event.type == QUIT:
+                os.remove('board-solved.txt')
                 pygame.quit()
                 exit()
             if event.type == KEYDOWN:
                 if event.key == K_ESCAPE:
+                    os.remove('board-solved.txt')
                     pygame.quit()
                     exit()
 
@@ -139,10 +141,12 @@ def highlightVisualize(y,x):
     # to exit while recurrsion
     for event in pygame.event.get():
         if event.type == QUIT:
+            os.remove('board-solved.txt')
             pygame.quit()
             exit()
         if event.type == KEYDOWN:
             if event.key == K_ESCAPE:
+                os.remove('board-solved.txt')
                 pygame.quit()
                 exit()
 
@@ -186,10 +190,12 @@ def nextPos(currentRow,currentCol):
             while True:
                 for event in pygame.event.get():
                     if event.type == QUIT:
+                        os.remove('board-solved.txt')
                         pygame.quit()
                         exit()
                     if event.type == KEYDOWN:
                         if event.key == K_ESCAPE:
+                            os.remove('board-solved.txt')
                             pygame.quit()
                             exit()
 
@@ -261,7 +267,7 @@ pygame.display.set_icon(logoIMG)
 
 win = pygame.display.set_mode((700,700))
 win.fill((255,255,255))
-pygame.draw.rect(win, (0,0,0), (48,48,604,604), 3)
+pygame.draw.rect(win, (0,0,0), (47,47,604,604), 3)
 surface = pygame.Surface((600,600))
 font = pygame.font.SysFont('Calibri', 45)
 
@@ -289,14 +295,17 @@ while True:
 
     for event in pygame.event.get():
         if event.type == QUIT:
+            os.remove('board-solved.txt')
             pygame.quit()
             exit()
         if event.type == KEYDOWN:
             if event.key == K_ESCAPE:
+                os.remove('board-solved.txt')
                 pygame.quit()
                 exit()
             if event.key == K_s:
                 visualizeBacktracking(startx,starty)
+                os.remove('board-solved.txt')
                 exit()
 
         if event.type == MOUSEBUTTONDOWN:

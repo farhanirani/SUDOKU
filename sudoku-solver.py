@@ -72,13 +72,6 @@ def nextPos(currentRow,currentCol):
     while True:
         if currentRow > 8:
             printBoard()
-            open('board-solved.txt', 'w').close()
-            f = open('board-solved.txt','a')
-            for line in board:
-                for num in line:
-                    f.write("%d " %num)
-                f.write("\n")
-            f.close()
             exit()
         if fixed[currentRow][currentCol] == 0:            
             return currentRow, currentCol

@@ -8,7 +8,7 @@ pygame.display.set_icon(logoIMG)
 
 win = pygame.display.set_mode((700,700))
 win.fill((255,255,255))
-pygame.draw.rect(win, (0,0,0), (48,48,604,604), 3)
+pygame.draw.rect(win, (0,0,0), (47,47,604,604), 3)
 
 surface = pygame.Surface((600,600))
 
