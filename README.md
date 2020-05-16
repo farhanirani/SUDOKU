@@ -24,4 +24,5 @@ else:
 
 # requirements
 ->Python ( for the basic sudoku solver )
+
 ->Pygame to play sudoku ( main )
