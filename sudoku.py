@@ -211,9 +211,9 @@ def visualizeBacktracking(currentRow,currentCol):
 
             time.sleep(0.1/divideFaster)
             iterations += 1
-            if iterations > 100:
+            if iterations > 200:
                 divideFaster += 5
-                iterations = 0
+                iterations = 100
 
             nextx, nexty = nextPos(currentRow,currentCol)
             visualizeBacktracking(nextx,nexty)
