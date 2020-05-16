@@ -1,5 +1,5 @@
 # Sudoku using Backtracking
-## ( **main** : run sudoku.py and press "S" )
+ **main** : run **sudoku.py** and **press "S"** 
 
 
 ## basic
