@@ -1,4 +1,4 @@
-# THIS CODE IS TO JUST SAVE THE SOLVED BOARD QUICKLY
+# THIS CODE IS TO JUST SOLVE AND SAVE THE SOLVED BOARD QUICKLY
 fixed = [[0 for _ in range(9)] for _ in range(9)]
 
 f = open('board.txt', 'r')
