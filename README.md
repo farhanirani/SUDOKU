@@ -33,9 +33,3 @@ click z_solve_board_quickest_visual.py ( pygame needed )
 z_solve_board_quickest.py uses the above technique to solve the board quicker than the normal backtracking way, which is used in z_solve_board.py
 
 
-
-# requirements
-->Python ( for the basic sudoku solver )
-
-->Pygame to play sudoku ( main )
-
