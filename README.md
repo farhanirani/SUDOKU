@@ -26,7 +26,7 @@ else:
     set the sudoku board manually inside the board.txt file
 
 
-## extra info
+### extra info
 to see the quickest way it can solve it using backtracking(ie. shifting the entire board to transport the grid with the highest amount of digits to the first position of the board and then solve),
 click z_solve_board_quickest_visual.py ( pygame needed )
 
