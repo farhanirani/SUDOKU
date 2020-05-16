@@ -1,4 +1,5 @@
 # Sudoku using Backtracking
+## ( main : run sudoku.py and press "S" )
 
 
 # basic
@@ -26,3 +27,9 @@ else:
 ->Python ( for the basic sudoku solver )
 
 ->Pygame to play sudoku ( main )
+
+## extra info
+to see the quickest way it can solve it using backtracking(ie. shifting the entire board to transport the grid with the highest amount of digits to the first position of the board and then solve),
+click z_solve_board_quickest_visual.py ( pygame needed )
+
+z_solve_board_quickest.py uses the above technique to solve the board quicker than the normal backtracking way, which is used in z_solve_board.py
