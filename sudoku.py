@@ -12,6 +12,9 @@ f.close()
 
 try:
     f = open('board-solved.txt', 'r')
+    lines = f.readlines()
+    solvedboard = [[ int(n) for n in line.split() ] for line in lines ]
+    f.close()
 except:
     print("BOARD ENTERED IS UNSOLVABLE, \nPLEASE CHECK THE NUMBERS AND TRY AGAIN")
     time.sleep(3)
