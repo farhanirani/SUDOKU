@@ -2,7 +2,7 @@ import os, time
 
 if os.path.exists("board-solved.txt"):
     os.remove('board-solved.txt')
-os.system("python z_solve_board_quick.py")
+os.system("python z_solve_board_quickest.py")
 
 f = open('board.txt', 'r')
 lines = f.readlines()
@@ -101,6 +101,27 @@ def highlight(y,x):
 
 
 # VISUALIZE BACKTRACKING ####################################################################
+
+def forVeryHardBoardTLE():
+    surface.fill((255, 255, 255))
+    drawboard()
+    for j in range(9):
+        for i in range(9):
+            if solvedboard[i][j] != 0: 
+                text = font.render(str(solvedboard[i][j]), 1, (0,0,0))
+                surface.blit(text, ((j)*(600/9)+22, (i)*(600/9)+15) )
+
+    win.blit(surface, (50,50))
+    pygame.display.update()
+    while True:
+        for event in pygame.event.get():
+            if event.type == QUIT:
+                pygame.quit()
+                exit()
+            if event.type == KEYDOWN:
+                if event.key == K_ESCAPE:
+                    pygame.quit()
+                    exit()
 
 def redrawVisualize():
     surface.fill((255, 255, 255))
@@ -209,14 +230,16 @@ def visualizeBacktracking(currentRow,currentCol):
         if checkIfPlacingIsPossible(currentRow,currentCol,number) == 1 :
             boardForVisual[currentRow][currentCol] = number + 1
 
-            if divideFaster <= 250:
+            if divideFaster <= 20:
                 highlightVisualize(currentRow,currentCol)
+            else:
+                forVeryHardBoardTLE()
 
             time.sleep(0.1/divideFaster)
             iterations += 1
             if iterations > 200:
-                divideFaster += 5
-                iterations = 100
+                divideFaster += 2
+                iterations = 0
 
             nextx, nexty = nextPos(currentRow,currentCol)
             visualizeBacktracking(nextx,nexty)
@@ -248,6 +271,8 @@ timeTimer = 0
 
 iterations = 0
 divideFaster = 1
+x = 0
+y = 0
 
 while True:
     clock.tick(60)
