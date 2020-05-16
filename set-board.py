@@ -1,4 +1,4 @@
-import pygame
+import pygame, os
 from pygame.locals import *
 pygame.init()
 pygame.display.set_caption("SET BOARD")
@@ -82,10 +82,16 @@ f.close()
 font = pygame.font.SysFont('Calibri', 35)
 text = font.render("Press Enter to Save", 1, (0,0,0))
 win.blit(text, (220,5) )
+
 text = font.render("Reset", 1, (255,255,255))
-font = pygame.font.SysFont('Calibri', 45)
-pygame.draw.rect(win, (80,80,80), (300,658,100,35))
+pygame.draw.rect(win, (80,80,80), (300,658,90,35))
 win.blit(text, (305,660) )
+
+text = font.render("Random", 1, (255,255,255))
+pygame.draw.rect(win, (80,80,80), (400,658,130,35))
+win.blit(text, (405,660) )
+
+font = pygame.font.SysFont('Calibri', 45)
 
 x = 0
 y = 0
@@ -107,11 +113,19 @@ while True:
 
         if event.type == MOUSEBUTTONDOWN:
             ty,tx = pygame.mouse.get_pos()
-            if ty > 300 and ty < 400 and tx > 658 and tx < 693 :
+            if ty > 300 and ty < 390 and tx > 658 and tx < 693 :
                 for i in range(9):
                     for j in range(9):
                         board[i][j] = 0
                 redraw()
+            elif ty > 400 and ty < 530 and tx > 658 and tx < 693 :
+                os.system("python z_generate_random_board.py")
+                f = open('board.txt', 'r')
+                lines = f.readlines()
+                board = [[ int(n) for n in line.split() ] for line in lines ]
+                f.close()
+                redraw()
+
             else:
                 ty -= 50
                 tx -= 50
