@@ -290,7 +290,7 @@ while True:
         timee += 1
         text = font.render(str(timee), 1, (0,0,0))
         pygame.draw.rect(win, (255,255,255), (600,660,200,50) )
-        win.blit(text, ( 650, 655 ) )
+        win.blit(text, ( 600, 655 ) )
         pygame.display.update()
 
     for event in pygame.event.get():
